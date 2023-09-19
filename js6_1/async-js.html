@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asenkron Programlama</title>
+</head>
+<body>
+
+    <button id="btn">Save</button>
+
+    <script>
+
+        //senkron
+            // console.log(2);
+            // console.log(3);
+            // console.log(4);
+
+        //asenkron
+        console.log(2);
+        setTimeout(() => {
+            console.log(3);
+        },2000)
+        console.log(4);
+
+        document.getElementById("btn").addEventListener("click", () => {
+            
+        })
+
+    </script>
+    
+</body>
+</html>
