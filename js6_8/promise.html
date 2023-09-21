@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+
+    
+
+    <script>
+
+        console.log("Start");
+
+        const serverStatus = false;
+
+        const login = (username,passward) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if(serverStatus) {
+                        resolve({username: username, email: "info@onurarda.com"})
+                    } else {
+                        reject("Server Kapali");
+                    }
+                },1000);
+            });  
+        }
+
+        const getPostsByUsername = (username) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(["post1","post2","post3","post4","post5"]); 
+                },2000);
+            })
+        }
+
+        const getPostDetails = (post) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("post details");
+                },1000)
+            })
+        }
+
+        // login("Onur Arda", "123456", user => {
+        //     console.log(user.username);
+        //     console.log(user.email);
+
+        //     getPostsByUsername(user.username, (posts) => {  
+        //         console.log(posts);
+
+        //         getPostDetails(posts[0], (details) => {
+        //             console.log(details);
+        //         });
+        //     })
+        // });
+
+        login("onurarda","123456")
+            .then(user => {
+                console.log(user);
+                return getPostsByUsername(user.username);
+            })
+            .then(posts => {
+                console.log(posts);
+                return getPostDetails(posts[0]);
+            })
+            .then(details => {
+                console.log(details);
+            }).catch(err => {
+                console.log(err);
+            })    
+
+
+
+
+
+
+        console.log("End");
+
+    </script>
+    
+</body>
+</html>
